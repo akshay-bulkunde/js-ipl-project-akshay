@@ -30,19 +30,36 @@ function getBatsmanStrikeRatePerSeason(matches, deliveries) {
     }, {})
 
     let batsmanStrikeRate = {};
+    // for (let season in batsmanStats) {
+    //     batsmanStrikeRate[season] = [];
+    //     for (let batsmanName in batsmanStats[season]) {
+    //         const { runs, ballsFaced } = batsmanStats[season][batsmanName];
+    //         let strikeRate = parseFloat(((runs / ballsFaced) * 100).toFixed(2));
+    //         batsmanStrikeRate[season].push({
+    //             batsman: batsmanName,
+    //             Sr: strikeRate
+    //         })
+    //     }
+    // }
+    let highestStriker = {};
     for (let season in batsmanStats) {
-        batsmanStrikeRate[season] = [];
+        let topBatsman = "";
+        let highestSR = -1;
         for (let batsmanName in batsmanStats[season]) {
             const { runs, ballsFaced } = batsmanStats[season][batsmanName];
-            let strikeRate = parseFloat(((runs / ballsFaced) * 100).toFixed(2));
-            batsmanStrikeRate[season].push({
-                batsman: batsmanName,
-                Sr: strikeRate
-            })
+            let sr = (runs / ballsFaced) * 100;
+            if (sr > highestSR) {
+                highestSR = sr;
+                topBatsman = batsmanName;
+            }
+        }
+        highestStriker[season] = {
+            batsman: topBatsman,
+            strikeRate: highestSR
         }
     }
+    return highestStriker;
 
-    return batsmanStrikeRate;
 }
 // getBatsmanStrikeRatePerSeason(matches , deliveries)
 console.log(getBatsmanStrikeRatePerSeason(matches, deliveries));
