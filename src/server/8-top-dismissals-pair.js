@@ -1,5 +1,5 @@
 //Find the highest number of times one player has been dismissed by another player
-
+const fs = require('fs');
 const deliveries = require('../../csvTojson/deliveries.json');
 
 function findMostDismissedPlayerByBowler(deliveries) {
@@ -23,6 +23,7 @@ function findMostDismissedPlayerByBowler(deliveries) {
         }
         return acc;
     }, {})
+    
     let highestDismissals = [];
     for(let bowler in bowlerStats){
         if(bowlerStats.hasOwnProperty(bowler)){
@@ -41,7 +42,16 @@ function findMostDismissedPlayerByBowler(deliveries) {
     return highestDismissals[0];
 }
 
-console.log(findMostDismissedPlayerByBowler(deliveries))
+let highestDismissals = findMostDismissedPlayerByBowler(deliveries)
+
+
+try {
+    fs.writeFileSync('../public/output/findMostDismissedPlayerByBowler.json', JSON.stringify(highestDismissals , null, 2));
+    console.log("File parsed successfully");
+}
+catch (error) {
+    console.log("File parsing failed ", error);
+}
 // [
 //     {
 //       "bowler": "Z Khan",

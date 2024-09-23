@@ -1,7 +1,7 @@
 // Top 10 economical bowlers in the year 2015
-
-const matches = require('../csvTojson/matches.json');
-const deliveries = require('../csvTojson/deliveries.json');
+const fs = require('fs');
+const matches = require('../../csvTojson/matches.json');
+const deliveries = require('../../csvTojson/deliveries.json');
 
 function getMatchId(matches) {
     let matchIds = matches.reduce((matchId, match) => {
@@ -50,5 +50,13 @@ function getTopEconomicalBowlers(deliveries, matchIds) {
     return topEconomicalBowlers.slice(0, 10);
 }
 
-// getTopEconomicalBowlers(deliveries, matchIds)
-console.log(getTopEconomicalBowlers(deliveries, matchIds));
+let topEconomicalBowlers = getTopEconomicalBowlers(deliveries, matchIds);
+
+
+try {
+    fs.writeFileSync('../public/output/topEconomicalBowlers.json', JSON.stringify(topEconomicalBowlers, null, 2));
+    console.log("File parsed successfully");
+}
+catch (error) {
+    console.log("File parsing failed ", error);
+}

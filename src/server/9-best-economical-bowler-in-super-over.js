@@ -1,5 +1,5 @@
 //Find the bowler with the best economy in super overs
-
+const fs = require('fs');
 const deliveries = require('../../csvTojson/deliveries.json');
 
 function findBestSuperOverBowler(deliveries) {
@@ -18,6 +18,7 @@ function findBestSuperOverBowler(deliveries) {
         }
         return acc;
     }, {})
+
     let bestSuperOverBowler = [];
     for (let bowler in bowlerStats) {
         let runs = bowlerStats[bowler]["runsConceded"];
@@ -31,4 +32,13 @@ function findBestSuperOverBowler(deliveries) {
     return bestSuperOverBowler[0];
 }
 
-console.log(findBestSuperOverBowler(deliveries))
+
+let bestSuperOverBowler = findBestSuperOverBowler(deliveries);
+
+try {
+    fs.writeFileSync('../public/output/findBestSuperOverBowler.json', JSON.stringify(bestSuperOverBowler, null, 2));
+    console.log("File parsed successfully");
+}
+catch (error) {
+    console.log("File parsing failed ", error);
+}

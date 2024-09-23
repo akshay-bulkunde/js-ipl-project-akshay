@@ -1,7 +1,8 @@
 //Find a player who has won the highest number of Player of the Match awards for each season.
-const matches = require('../csvTojson/matches.json');
+const fs = require('fs');
+const matches = require('../../csvTojson/matches.json');
 
-function getTopPlayerOfTheMatchPerSeason(matches){
+function getTopPlayerOfTheMatchPerSeason(){
     let topPlayersPerSeason = matches.reduce((topPlayers , match) => {
         let season = match["season"];
         if(!topPlayers.hasOwnProperty(season)){
@@ -31,4 +32,13 @@ function getTopPlayerOfTheMatchPerSeason(matches){
     return playerWithMostAwardsPerSeason;
 }
 
-console.log(getTopPlayerOfTheMatchPerSeason(matches));
+let playerWithMostAwardsPerSeason = getTopPlayerOfTheMatchPerSeason();
+
+
+try {
+    fs.writeFileSync('../public/output/playerWithMostAwardsPerSeason.json', JSON.stringify(playerWithMostAwardsPerSeason , null, 2));
+    console.log("File parsed successfully");
+}
+catch (error) {
+    console.log("File parsing failed ", error);
+}

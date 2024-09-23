@@ -1,7 +1,7 @@
 //Find the strike rate of a batsman for each season.
-
-const deliveries = require('../csvTojson/deliveries.json');
-const matches = require('../csvTojson/matches.json');
+const fs = require('fs');
+const deliveries = require('../../csvTojson/deliveries.json');
+const matches = require('../../csvTojson/matches.json');
 
 function getBatsmanStrikeRatePerSeason(matches, deliveries) {
     let matchSeasonMap = matches.reduce((accumulator, match) => {
@@ -29,7 +29,7 @@ function getBatsmanStrikeRatePerSeason(matches, deliveries) {
 
     }, {})
 
-    let batsmanStrikeRate = {};
+    // let batsmanStrikeRate = {};
     // for (let season in batsmanStats) {
     //     batsmanStrikeRate[season] = [];
     //     for (let batsmanName in batsmanStats[season]) {
@@ -61,5 +61,13 @@ function getBatsmanStrikeRatePerSeason(matches, deliveries) {
     return highestStriker;
 
 }
-// getBatsmanStrikeRatePerSeason(matches , deliveries)
-console.log(getBatsmanStrikeRatePerSeason(matches, deliveries));
+
+let highestStriker = getBatsmanStrikeRatePerSeason(matches, deliveries)
+
+try {
+    fs.writeFileSync('../public/output/highestStrikerPerSeason.json', JSON.stringify(highestStriker , null, 2));
+    console.log("File parsed successfully");
+}
+catch (error) {
+    console.log("File parsing failed ", error);
+}
