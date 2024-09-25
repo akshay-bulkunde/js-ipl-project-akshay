@@ -1,7 +1,7 @@
 //Find the strike rate of a batsman for each season.
 const fs = require('fs');
-const deliveries = require('../../csvTojson/deliveries.json');
-const matches = require('../../csvTojson/matches.json');
+const deliveries = require('../data/jsonData/deliveries.json');
+const matches = require('../data/jsonData/matches.json');
 
 function getBatsmanStrikeRatePerSeason(matches, deliveries) {
     let matchSeasonMap = matches.reduce((accumulator, match) => {
@@ -29,18 +29,6 @@ function getBatsmanStrikeRatePerSeason(matches, deliveries) {
 
     }, {})
 
-    // let batsmanStrikeRate = {};
-    // for (let season in batsmanStats) {
-    //     batsmanStrikeRate[season] = [];
-    //     for (let batsmanName in batsmanStats[season]) {
-    //         const { runs, ballsFaced } = batsmanStats[season][batsmanName];
-    //         let strikeRate = parseFloat(((runs / ballsFaced) * 100).toFixed(2));
-    //         batsmanStrikeRate[season].push({
-    //             batsman: batsmanName,
-    //             Sr: strikeRate
-    //         })
-    //     }
-    // }
     let highestStriker = {};
     for (let season in batsmanStats) {
         let topBatsman = "";
