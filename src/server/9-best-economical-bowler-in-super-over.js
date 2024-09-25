@@ -1,6 +1,6 @@
 //Find the bowler with the best economy in super overs
 const fs = require('fs');
-const deliveries = require('../../csvTojson/deliveries.json');
+const deliveries = require('../data/jsonData/deliveries.json');
 
 function findBestSuperOverBowler(deliveries) {
     let bowlerStats = deliveries.reduce((acc, delivery) => {
