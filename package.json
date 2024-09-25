@@ -1,5 +1,23 @@
 {
+  "name": "js-ipl-project-akshay",
+  "version": "1.0.0",
+  
+  "author": "akshay",
+  "license": "MIT",
   "dependencies": {
     "papaparse": "^5.4.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/akshay-bulkunde/js-ipl-project-akshay.git"
+  },
+  "keywords": [
+    "csv",
+    "json",
+    "converter",
+    "nodejs"
+  ]
 }
+
+
+
