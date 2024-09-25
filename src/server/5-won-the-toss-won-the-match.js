@@ -1,6 +1,6 @@
 // Find the number of times each team won the toss and also won the match.
 const fs = require('fs');
-const matches = require('../../csvTojson/matches.json');
+const matches = require('../data/jsonData/matches.json');
 
 function getTossAndMatchWinners(){
     let countTossAndMatchWinners = matches.reduce((tossAndMatchWinner , match) => {
