@@ -1,6 +1,6 @@
 //Find the highest number of times one player has been dismissed by another player
 const fs = require('fs');
-const deliveries = require('../../csvTojson/deliveries.json');
+const deliveries = require('../data/jsonData/deliveries.json');
 
 function findMostDismissedPlayerByBowler(deliveries) {
     let bowlerStats = deliveries.reduce((acc, delivery) => {
@@ -52,69 +52,6 @@ try {
 catch (error) {
     console.log("File parsing failed ", error);
 }
-// [
-//     {
-//       "bowler": "Z Khan",
-//       "batsman": "MS Dhoni",
-//       "dismissals": 7
-//     }
-//   ]
-  
-//run out
-//hit wicket
-//retired hurt\
 
-
-
-
-
-// function highestDismissal(deliveriesData)
-//     //  {
-//     let dismissalData = {};
-//     for(let key in deliveriesData)
-//     {
-//         let delivery = deliveriesData[key];
-//         let bowler =  delivery["bowler"];
-//         let batsman = delivery["batsman"];
-//         let dismissal = delivery["dismissal_kind"];
-
-//         if(!dismissalData.hasOwnProperty(batsman))
-//         {
-//             dismissalData[batsman] = {};
-//         }
-
-//         if(!dismissalData[batsman].hasOwnProperty(bowler))
-//             {
-//                 dismissalData[batsman][bowler] = 0;
-//             }
-//             if(dismissal)
-//              {
-//                 if(dismissal !== "run out")
-//                 {
-//                    dismissalData[batsman][bowler]++;
-//                 }
-//             }
-//     }
-//  let result = {};
-//         for (let batsman in dismissalData) {
-//             let bowlers = dismissalData[batsman];
-//             let highestBowler = null;
-//             let highestCount = 0;
-
-//             for (let bowler in bowlers) {
-//                 let count = bowlers[bowler];
-//                 if (count > highestCount) {
-//                     highestCount = count;
-//                     highestBowler = bowler;
-//                 }
-//             }
-//             if(highestBowler !== null && highestCount !==0){
-//             result[batsman] = { bowler: highestBowler, count: highestCount };
-//         }
-//         }
-//         return result;
-
-//     }
-//    console.log(highestDismissal(deliveriesData));
 
 
