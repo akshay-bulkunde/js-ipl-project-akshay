@@ -1,7 +1,7 @@
 // Top 10 economical bowlers in the year 2015
 const fs = require('fs');
-const matches = require('../../csvTojson/matches.json');
-const deliveries = require('../../csvTojson/deliveries.json');
+const matches = require('../data/jsonData/matches.json');
+const deliveries = require('../data/jsonData/deliveries.json');
 
 function getMatchId(matches) {
     let matchIds = matches.reduce((matchId, match) => {
