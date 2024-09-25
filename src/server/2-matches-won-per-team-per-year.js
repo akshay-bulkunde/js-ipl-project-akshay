@@ -1,5 +1,5 @@
 //Number of matches won per team per year in IPL.
-const matches = require('../../csvTojson/matches.json');
+const matches = require('../data/jsonData/matches.json');
 const fs = require('fs');
 
 function getMatchesWonPerTeamPerYear(){
@@ -31,21 +31,3 @@ try {
 catch (error) {
     console.log("File parsing failed ", error);
 }
-// function getMatchesWonPerTeamPerYear(matches){
-//     let matchesWonPerTeamPerYear = matches.reduce((teamStats , match) => {
-//         let season = match["season"];
-//         let WinnigTeam = match["winner"];
-//         const defaultObject = {season : "" , count : 0};
-//         if(teamStats.length === 0){
-//             teamStats.push({season : defaultObject.season});
-//         }else{
-//             let hasSeasonKey = teamStats.some((item) => item.hasOwnProperty("season"));
-//             if(!hasSeasonKey){
-//                 teamStats.push({season : defaultObject.season});
-//             }
-//             else{
-//                 teamStats.push({season : WinnigTeam })
-//             }
-//         }
-//     })
-// }
