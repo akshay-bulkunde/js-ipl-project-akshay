@@ -1,6 +1,6 @@
 //Find a player who has won the highest number of Player of the Match awards for each season.
 const fs = require('fs');
-const matches = require('../../csvTojson/matches.json');
+const matches = require('../data/jsonData/matches.json');
 
 function getTopPlayerOfTheMatchPerSeason(){
     let topPlayersPerSeason = matches.reduce((topPlayers , match) => {
