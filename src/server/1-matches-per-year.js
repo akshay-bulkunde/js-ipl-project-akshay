@@ -1,6 +1,6 @@
 // Number of matches played per year for all the years in IPL.
 const fs = require('fs');
-const matches = require('../../csvTojson/matches.json');
+const matches = require('../data/jsonData/matches.json');
 
 function getmatchesPerYear() {
     let numberOfMatches = matches.reduce((matchesCount, match) => {
@@ -16,6 +16,7 @@ function getmatchesPerYear() {
 }
 
 let matchesPerYear = getmatchesPerYear();
+
 
 try {
     fs.writeFileSync('../public/output/matchesPerYear.json', JSON.stringify(matchesPerYear, null, 2));
